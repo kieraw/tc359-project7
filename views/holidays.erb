@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+	<body>
+		<h1>Current month and year holidays:</h1>
+    	<% @holiday.each do |holidays| %>
+    		<ul>Holiday: <%= holidays[0]["name"] %>, Country: <%= holidays[0]["country"] %>, Date: <%= holidays[0]["date"] %> </ul>
+    	<% end %>
+
+    	<h1>My birthday month and year holidays:</h1>
+    	<% @bday_holiday.each do |holidays| %>
+    		<ul>Holiday: <%= holidays[0]["name"] %>, Country: <%= holidays[0]["country"] %>, Date: <%= holidays[0]["date"] %> </ul>
+    	<% end %>
+	</body>
+</html>
