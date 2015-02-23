@@ -1,14 +1,34 @@
 <!doctype html>
 <html>
 	<body>
-		<h1>Current month and year holidays:</h1>
-    	<% @holiday.each do |holidays| %>
-    		<ul>Holiday: <%= holidays[0]["name"] %>, Country: <%= holidays[0]["country"] %>, Date: <%= holidays[0]["date"] %> </ul>
-    	<% end %>
+        <h1>Holiday Form</h1>
+        <form>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select name="country" class="form-control">
+                    <% %w(us be br gb).each do |country| %>
+                        <option value="<%= country %>" <%= 'selected="selected"' if params[:country] == country %>><%= country %></option>
+                    <% end %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                 <input name="year" value="<%= params[:year] %>" type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="month">Month</label>
+                <input name="month" value="<%= params[:month] %>" type="number" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Let's see the holidays!</button>
+        </form>
 
-    	<h1>My birthday month and year holidays:</h1>
-    	<% @bday_holiday.each do |holidays| %>
-    		<ul>Holiday: <%= holidays[0]["name"] %>, Country: <%= holidays[0]["country"] %>, Date: <%= holidays[0]["date"] %> </ul>
-    	<% end %>
+        <hr>
+
+        <div class="holidays">
+    		<h1>Holidays:</h1>
+        	<% @holiday.each do |holidays| %>
+        		<ul>Holiday: <%= holidays[0]["name"] %>, Country: <%= holidays[0]["country"] %>, Date: <%= holidays[0]["date"] %> </ul>
+        	<% end %>
+        </div>
 	</body>
 </html>
